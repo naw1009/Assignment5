@@ -1,0 +1,376 @@
+<html>
+<head>
+<title>Chutes and Ladders</title>
+<script>
+function RandomInt(low, high)
+{
+  return Math.floor(Math.random()*(high-low+1)+low);
+}
+
+function startUp()
+{
+	 player1Image = "player1Image1.jpg";
+	 player2Image = "player2Image1.jpg";
+	 // set up for player1's turn
+	 document.getElementById('PlayerImage').src = player1Image;
+	 document.getElementById('PlayerText').value = 1;
+	 document.getElementById('NextImage').src = player2Image;
+	 player1Loc = 0;
+	 player2Loc = 0;
+	 gameOver = false;
+}
+function rollAndMove()
+{
+  var roll;
+	if (!gameOver){
+  	roll = RandomInt(1,6);
+  	document.getElementById('dieImage').src = 
+  	           "http://balance3e.com/Images/die" + roll + ".gif";
+  	move(roll);
+		}
+}
+function adjustForSlideOrLadder(nextLoc)
+{ 
+		 // check new location for slide or chute & adjust
+		 // currently no adjustment is made, so...
+		 return nextLoc;
+}
+function move(places)
+{
+	currentPlayerNum = document.getElementById('PlayerText').innerHTML;
+	currentPlayer = document.getElementById('PlayerImage').src;
+	currentLoc = findOnBoard(currentPlayer);
+	thisCell = "cell" + currentLoc;
+	thisCellImg = currentLoc + ".jpg";
+	nextLoc = currentLoc + places;
+	if (nextLoc < 81){
+     nextLoc = adjustForSlideOrLadder(nextLoc);
+		 //alert('move to: ' + nextLoc);
+		 nextCell = "cell" + nextLoc;
+	   if (document.getElementById(nextCell).src == document.getElementById('NextImage').src){
+				alert('The other player has blocked this move');
+		 }
+		 else { // unoccupied
+      	// display image in new location
+				document.getElementById(nextCell).src = currentPlayer;
+				if (currentLoc > 0)
+           document.getElementById(thisCell).src = thisCellImg;
+		 }
+	}
+	else if (nextLoc == 81) {
+		alert('Winner!');
+		victoryDance(currentPlayer);
+		gameOver = true;
+	}
+	
+  switchPlayers(currentPlayerNum);
+}
+
+function switchPlayers(currentPlayerNum)
+{
+	if (currentPlayerNum == 1){
+	  document.getElementById('PlayerText').innerHTML = 2;
+		document.getElementById('PlayerImage').src = player2Image;
+		document.getElementById('NextImage').src = player1Image;
+		}
+	else {
+	  document.getElementById('PlayerText').innerHTML = 1;
+		document.getElementById('PlayerImage').src = player1Image;
+		document.getElementById('NextImage').src = player2Image;
+		}
+}
+
+function findOnBoard(currentPlayer)
+// if current player is not found, return 0
+{
+  // this is the HARD way to do it... very error prone
+	if (document.getElementById('cell1').src == currentPlayer)
+	   return 1;
+	else if (document.getElementById('cell2').src == currentPlayer)
+	   return 2;
+	else if (document.getElementById('cell3').src == currentPlayer)
+	   return 3;
+	else if (document.getElementById('cell4').src == currentPlayer)
+	   return 4;
+	else if (document.getElementById('cell5').src == currentPlayer)
+	   return 5;
+	else if (document.getElementById('cell6').src == currentPlayer)
+	   return 6;
+	else if (document.getElementById('cell7').src == currentPlayer)
+	   return 7;
+	else if (document.getElementById('cell8').src == currentPlayer)
+	   return 8;
+	else if (document.getElementById('cell9').src == currentPlayer)
+	   return 9;
+	else if (document.getElementById('cell10').src == currentPlayer)
+	   return 10;
+	else if (document.getElementById('cell11').src == currentPlayer)
+	   return 11;
+	else if (document.getElementById('cell12').src == currentPlayer)
+	   return 12;
+	else if (document.getElementById('cell13').src == currentPlayer)
+	   return 13;
+	else if (document.getElementById('cell14').src == currentPlayer)
+	   return 14;
+	else if (document.getElementById('cell15').src == currentPlayer)
+	   return 15;
+	else if (document.getElementById('cell16').src == currentPlayer)
+	   return 16;
+	else if (document.getElementById('cell17').src == currentPlayer)
+	   return 17;
+	else if (document.getElementById('cell18').src == currentPlayer)
+	   return 18;
+	else if (document.getElementById('cell19').src == currentPlayer)
+	   return 19;
+	else if (document.getElementById('cell20').src == currentPlayer)
+	   return 20;
+	else if (document.getElementById('cell21').src == currentPlayer)
+	   return 21;
+	else if (document.getElementById('cell22').src == currentPlayer)
+	   return 22;
+	else if (document.getElementById('cell23').src == currentPlayer)
+	   return 23;
+	else if (document.getElementById('cell24').src == currentPlayer)
+	   return 24;
+	else if (document.getElementById('cell25').src == currentPlayer)
+	   return 25;
+	else if (document.getElementById('cell26').src == currentPlayer)
+	   return 26;
+	else if (document.getElementById('cell27').src == currentPlayer)
+	   return 27;
+	else if (document.getElementById('cell28').src == currentPlayer)
+	   return 28;
+	else if (document.getElementById('cell29').src == currentPlayer)
+	   return 29;
+	else if (document.getElementById('cell30').src == currentPlayer)
+	   return 30;
+	else if (document.getElementById('cell31').src == currentPlayer)
+	   return 31;
+	else if (document.getElementById('cell32').src == currentPlayer)
+	   return 32;
+	else if (document.getElementById('cell33').src == currentPlayer)
+	   return 33;
+	else if (document.getElementById('cell34').src == currentPlayer)
+	   return 34;
+	else if (document.getElementById('cell35').src == currentPlayer)
+	   return 35;
+	else if (document.getElementById('cell36').src == currentPlayer)
+	   return 36;
+	else if (document.getElementById('cell37').src == currentPlayer)
+	   return 37;
+	else if (document.getElementById('cell38').src == currentPlayer)
+	   return 38;
+	else if (document.getElementById('cell39').src == currentPlayer)
+	   return 39;
+	else if (document.getElementById('cell40').src == currentPlayer)
+	   return 40;
+	else if (document.getElementById('cell41').src == currentPlayer)
+	   return 41;
+	else if (document.getElementById('cell42').src == currentPlayer)
+	   return 42;
+	else if (document.getElementById('cell43').src == currentPlayer)
+	   return 43;
+	else if (document.getElementById('cell44').src == currentPlayer)
+	   return 44;
+	else if (document.getElementById('cell45').src == currentPlayer)
+	   return 45;
+	else if (document.getElementById('cell46').src == currentPlayer)
+	   return 46;
+	else if (document.getElementById('cell47').src == currentPlayer)
+	   return 47;
+	else if (document.getElementById('cell48').src == currentPlayer)
+	   return 48;
+	else if (document.getElementById('cell49').src == currentPlayer)
+	   return 49;
+	else if (document.getElementById('cell50').src == currentPlayer)
+	   return 50;
+	else if (document.getElementById('cell51').src == currentPlayer)
+	   return 51;
+	else if (document.getElementById('cell52').src == currentPlayer)
+	   return 52;
+	else if (document.getElementById('cell53').src == currentPlayer)
+	   return 53;
+	else if (document.getElementById('cell54').src == currentPlayer)
+	   return 54;
+	else if (document.getElementById('cell55').src == currentPlayer)
+	   return 55;
+	else if (document.getElementById('cell56').src == currentPlayer)
+	   return 56;
+	else if (document.getElementById('cell57').src == currentPlayer)
+	   return 57;
+	else if (document.getElementById('cell58').src == currentPlayer)
+	   return 58;
+	else if (document.getElementById('cell59').src == currentPlayer)
+	   return 59;
+	else if (document.getElementById('cell60').src == currentPlayer)
+	   return 60;
+	else if (document.getElementById('cell61').src == currentPlayer)
+	   return 61;
+	else if (document.getElementById('cell62').src == currentPlayer)
+	   return 62;
+	else if (document.getElementById('cell63').src == currentPlayer)
+	   return 63;
+	else if (document.getElementById('cell64').src == currentPlayer)
+	   return 64;
+	else if (document.getElementById('cell65').src == currentPlayer)
+	   return 65;
+	else if (document.getElementById('cell66').src == currentPlayer)
+	   return 66;
+	else if (document.getElementById('cell67').src == currentPlayer)
+	   return 67;
+	else if (document.getElementById('cell68').src == currentPlayer)
+	   return 68;
+	else if (document.getElementById('cell69').src == currentPlayer)
+	   return 69;
+	else if (document.getElementById('cell70').src == currentPlayer)
+	   return 70;
+	else if (document.getElementById('cell71').src == currentPlayer)
+	   return 71;
+	else if (document.getElementById('cell72').src == currentPlayer)
+	   return 72;
+	else if (document.getElementById('cell73').src == currentPlayer)
+	   return 73;
+	else if (document.getElementById('cell74').src == currentPlayer)
+	   return 74;
+	else if (document.getElementById('cell75').src == currentPlayer)
+	   return 75;
+	else if (document.getElementById('cell76').src == currentPlayer)
+	   return 76;
+	else if (document.getElementById('cell77').src == currentPlayer)
+	   return 77;
+	else if (document.getElementById('cell78').src == currentPlayer)
+	   return 78;
+	else if (document.getElementById('cell79').src == currentPlayer)
+	   return 79;
+	else if (document.getElementById('cell80').src == currentPlayer)
+	   return 80;
+	else if (document.getElementById('cell81').src == currentPlayer)
+	   return 81;
+	else 	// not found, so...
+		 return 0;
+}
+
+function victoryDance(currentPlayer)
+{
+  alert('Winner!');
+}
+
+</script>
+</head>
+<body onload="startUp();">
+<h1>Chutes (Snakes) and Ladders</h1>
+<table summary="game board" cellpadding="0" cellspacing="0">
+<tr>
+<td><img id="cell73" src="73.jpg" alt="73" height="66" width="66"></td>
+<td><img id="cell74" src="74.jpg" alt="74" height="66" width="66"></td>
+<td><img id="cell75" src="75.jpg" alt="75" height="66" width="66"></td>
+<td><img id="cell76" src="76.jpg" alt="76" height="66" width="66"></td>
+<td><img id="cell77" src="77.jpg" alt="77" height="66" width="66"></td>
+<td><img id="cell78" src="78.jpg" alt="78" height="66" width="66"></td>
+<td><img id="cell79" src="79.jpg" alt="79" height="66" width="66"></td>
+<td><img id="cell80" src="80.jpg" alt="80" height="66" width="66"></td>
+<td><img id="cell81" src="81.jpg" alt="81" height="66" width="66"></td>
+<td rowspan="9" valign="center" align="center">
+<h2>Control Panel</h2>
+<h3>Up Now</h3>
+<h4>Player <span id="PlayerText">1</span></h4>
+<p><img id="PlayerImage" src="player1Image1.jpg" alt=""></p>
+<p>
+<img src="http://balance3e.com/Images/die1.gif" alt="click to roll"
+   id="dieImage" onclick="rollAndMove();">
+<br><i>Click to roll</i></p>
+<h3>Up Next</h3>
+<p><img id="NextImage" src="player2Image1.jpg" alt=""></p>
+</td>
+</tr>
+<tr>
+<td><img id="cell72" src="72.jpg" alt="72" height="66" width="66"></td>
+<td><img id="cell71" src="71.jpg" alt="71" height="66" width="66"></td>
+<td><img id="cell70" src="70.jpg" alt="70" height="66" width="66"></td>
+<td><img id="cell69" src="69.jpg" alt="69" height="66" width="66"></td>
+<td><img id="cell68" src="68.jpg" alt="68" height="66" width="66"></td>
+<td><img id="cell67" src="67.jpg" alt="67" height="66" width="66"></td>
+<td><img id="cell66" src="66.jpg" alt="66" height="66" width="66"></td>
+<td><img id="cell65" src="65.jpg" alt="65" height="66" width="66"></td>
+<td><img id="cell64" src="64.jpg" alt="64" height="66" width="66"></td>
+</tr>
+<tr>
+<td><img id="cell55" src="55.jpg" alt="55" height="66" width="66"></td>
+<td><img id="cell56" src="56.jpg" alt="56" height="66" width="66"></td>
+<td><img id="cell57" src="57.jpg" alt="57" height="66" width="66"></td>
+<td><img id="cell58" src="58.jpg" alt="58" height="66" width="66"></td>
+<td><img id="cell59" src="59.jpg" alt="59" height="66" width="66"></td>
+<td><img id="cell60" src="60.jpg" alt="60" height="66" width="66"></td>
+<td><img id="cell61" src="61.jpg" alt="61" height="66" width="66"></td>
+<td><img id="cell62" src="62.jpg" alt="62" height="66" width="66"></td>
+<td><img id="cell63" src="63.jpg" alt="63" height="66" width="66"></td>
+</tr>
+<tr>
+<td><img id="cell54" src="54.jpg" alt="54" height="66" width="66"></td>
+<td><img id="cell53" src="53.jpg" alt="53" height="66" width="66"></td>
+<td><img id="cell52" src="52.jpg" alt="52" height="66" width="66"></td>
+<td><img id="cell51" src="51.jpg" alt="51" height="66" width="66"></td>
+<td><img id="cell50" src="50.jpg" alt="50" height="66" width="66"></td>
+<td><img id="cell49" src="49.jpg" alt="49" height="66" width="66"></td>
+<td><img id="cell48" src="48.jpg" alt="48" height="66" width="66"></td>
+<td><img id="cell47" src="47.jpg" alt="47" height="66" width="66"></td>
+<td><img id="cell46" src="46.jpg" alt="46" height="66" width="66"></td>
+</tr>
+<tr>
+<td><img id="cell37" src="37.jpg" alt="37" height="66" width="66"></td>
+<td><img id="cell38" src="38.jpg" alt="38" height="66" width="66"></td>
+<td><img id="cell39" src="39.jpg" alt="39" height="66" width="66"></td>
+<td><img id="cell40" src="40.jpg" alt="40" height="66" width="66"></td>
+<td><img id="cell41" src="41.jpg" alt="41" height="66" width="66"></td>
+<td><img id="cell42" src="42.jpg" alt="42" height="66" width="66"></td>
+<td><img id="cell43" src="43.jpg" alt="43" height="66" width="66"></td>
+<td><img id="cell44" src="44.jpg" alt="44" height="66" width="66"></td>
+<td><img id="cell45" src="45.jpg" alt="45" height="66" width="66"></td>
+</tr>
+<tr>
+<td><img id="cell36" src="36.jpg" alt="36" height="66" width="66"></td>
+<td><img id="cell35" src="35.jpg" alt="35" height="66" width="66"></td>
+<td><img id="cell34" src="34.jpg" alt="34" height="66" width="66"></td>
+<td><img id="cell33" src="33.jpg" alt="33" height="66" width="66"></td>
+<td><img id="cell32" src="32.jpg" alt="32" height="66" width="66"></td>
+<td><img id="cell31" src="31.jpg" alt="31" height="66" width="66"></td>
+<td><img id="cell30" src="30.jpg" alt="30" height="66" width="66"></td>
+<td><img id="cell29" src="29.jpg" alt="29" height="66" width="66"></td>
+<td><img id="cell28" src="28.jpg" alt="28" height="66" width="66"></td>
+</tr>
+<tr>
+<td><img id="cell19" src="19.jpg" alt="19" height="66" width="66"></td>
+<td><img id="cell20" src="20.jpg" alt="20" height="66" width="66"></td>
+<td><img id="cell21" src="21.jpg" alt="21" height="66" width="66"></td>
+<td><img id="cell22" src="22.jpg" alt="22" height="66" width="66"></td>
+<td><img id="cell23" src="23.jpg" alt="23" height="66" width="66"></td>
+<td><img id="cell24" src="24.jpg" alt="24" height="66" width="66"></td>
+<td><img id="cell25" src="25.jpg" alt="25" height="66" width="66"></td>
+<td><img id="cell26" src="26.jpg" alt="26" height="66" width="66"></td>
+<td><img id="cell27" src="27.jpg" alt="27" height="66" width="66"></td>
+</tr>
+<tr>
+<td><img id="cell18" src="18.jpg" alt="18" height="66" width="66"></td>
+<td><img id="cell17" src="17.jpg" alt="17" height="66" width="66"></td>
+<td><img id="cell16" src="16.jpg" alt="16" height="66" width="66"></td>
+<td><img id="cell15" src="15.jpg" alt="15" height="66" width="66"></td>
+<td><img id="cell14" src="14.jpg" alt="14" height="66" width="66"></td>
+<td><img id="cell13" src="13.jpg" alt="13" height="66" width="66"></td>
+<td><img id="cell12" src="12.jpg" alt="12" height="66" width="66"></td>
+<td><img id="cell11" src="11.jpg" alt="11" height="66" width="66"></td>
+<td><img id="cell10" src="10.jpg" alt="10" height="66" width="66"></td>
+</tr>
+<tr>
+<td><img id="cell1" src="1.jpg" alt="1" height="66" width="66"></td>
+<td><img id="cell2" src="2.jpg" alt="2" height="66" width="66"></td>
+<td><img id="cell3" src="3.jpg" alt="3" height="66" width="66"></td>
+<td><img id="cell4" src="4.jpg" alt="4" height="66" width="66"></td>
+<td><img id="cell5" src="5.jpg" alt="5" height="66" width="66"></td>
+<td><img id="cell6" src="6.jpg" alt="6" height="66" width="66"></td>
+<td><img id="cell7" src="7.jpg" alt="7" height="66" width="66"></td>
+<td><img id="cell8" src="8.jpg" alt="8" height="66" width="66"></td>
+<td><img id="cell9" src="9.jpg" alt="9" height="66" width="66"></td>
+</tr>
+</table>
+</body>
+</html>
